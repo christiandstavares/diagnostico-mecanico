@@ -17,16 +17,11 @@ import java.util.List;
  * Created by christian-tavares on 24/10/17.
  */
 @RestController
-@RequestMapping("/carro")
+@RequestMapping("/carros")
 public class CarroController {
 
     @Autowired
     private CarroService carroService;
-
-    @RequestMapping(value = "/olamundo", method = RequestMethod.GET)
-    public ResponseEntity<String> olaMundo() {
-        return new ResponseEntity<>("Olá Mundo!", HttpStatus.OK);
-    }
 
     @RequestMapping(method = {RequestMethod.POST, RequestMethod.PUT})
     public ResponseEntity<Carro> salvarCarro(@RequestBody Carro carro) {
@@ -41,6 +36,6 @@ public class CarroController {
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Carro> excluirCarro(@PathVariable("id") Long id) {
         carroService.excluir(id);
-        return new ResponseEntity<Carro>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

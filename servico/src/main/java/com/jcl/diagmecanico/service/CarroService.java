@@ -16,8 +16,17 @@ public class CarroService {
     @Autowired
     private CarroRepository carroRepository;
 
+    @Autowired
+    private ItemCarroService itemCarroService;
+
     public Carro salvar(Carro carro) {
+        boolean idNulo = carro.getId() == null;
         Carro carroSalvo = carroRepository.save(carro);
+
+        if (idNulo) {
+            carroSalvo.setItens(itemCarroService.setItensDefault(carroSalvo));
+        }
+
         return carroSalvo;
     }
 
