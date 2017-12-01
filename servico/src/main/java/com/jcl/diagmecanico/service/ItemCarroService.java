@@ -33,6 +33,17 @@ public class ItemCarroService {
         return itensDefault;
     }
 
+    public List<ItemCarro> salvar(List<ItemCarro> itens, Carro carro) {
+        List<ItemCarro> itensSalvos = new ArrayList<>();
+
+        itens.forEach(item -> {
+            item.setCarro(carro);
+            itensSalvos.add(salvar(item));
+        });
+
+        return itensSalvos;
+    }
+
     public ItemCarro salvar(ItemCarro itemCarro) {
         return itemCarroRepository.save(itemCarro);
     }

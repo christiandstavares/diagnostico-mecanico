@@ -1,16 +1,28 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+
+import { Usuario } from './../usuario/usuario';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
 
-  usuarioAutenticado: boolean = false;
-  mostrarMenuEmitter = new EventEmitter<boolean>();
+  usuarioAutenticado: Usuario = null;
+  mostrarMenuUsuarioEmitter = new EventEmitter<boolean>();
 
-  constructor(private http: Http) { }
+  constructor(
+    private http: Http,
+    private router: Router
+  ) { }
 
   fazerLogin(login: any) {
-    this.http.post('//localhost:8080/login', login)
-      .subscribe(dados => console.log(dados));
+    this.http.post('/api/login', login)
+      .map(dados => dados.json())
+      .subscribe(dados => {
+        this.usuarioAutenticado = dados;
+        this.mostrarMenuUsuarioEmitter.emit(false);
+        this.router.navigate(['usuario', dados.id]);
+      });
   }
 }

@@ -25,9 +25,15 @@ public class CarroService {
 
         if (idNulo) {
             carroSalvo.setItens(itemCarroService.setItensDefault(carroSalvo));
+        } else {
+            carroSalvo.setItens(itemCarroService.salvar(carro.getItens(), carro));
         }
 
         return carroSalvo;
+    }
+
+    public Carro buscarPorId(Long id) {
+        return carroRepository.findOne(id);
     }
 
     public List<Carro> listarTodos() {

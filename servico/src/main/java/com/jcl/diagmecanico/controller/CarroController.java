@@ -1,7 +1,9 @@
 package com.jcl.diagmecanico.controller;
 
 import com.jcl.diagmecanico.entity.Carro;
+import com.jcl.diagmecanico.entity.dto.CarroDTO;
 import com.jcl.diagmecanico.service.CarroService;
+import com.jcl.diagmecanico.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,9 +25,19 @@ public class CarroController {
     @Autowired
     private CarroService carroService;
 
+    @Autowired
+    private UsuarioService usuarioService;
+
     @RequestMapping(method = {RequestMethod.POST, RequestMethod.PUT})
-    public ResponseEntity<Carro> salvarCarro(@RequestBody Carro carro) {
+    public ResponseEntity<Carro> salvarCarro(@RequestBody CarroDTO carroDTO) {
+        Carro carro = carroDTO.getCarro();
+        carro.setUsuario(usuarioService.buscarPorId(carroDTO.getIdUsuario()));
         return new ResponseEntity<>(carroService.salvar(carro), HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Carro> buscarPorId(@PathVariable Long id) {
+        return new ResponseEntity<>(carroService.buscarPorId(id), HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.GET)

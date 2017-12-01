@@ -1,9 +1,9 @@
-<nav *ngIf="mostrarMenu">
+<nav>
   <div class="nav-wrapper">
-    <a routerLink="" class="brand-logo right">Gerenciamento de manutenção de veículo</a>
-    <ul id="nav-mobile" class="left hide-on-med-and-down">
-      <li routerLinkActive="active"><a routerLink="/home">Home</a></li>
-      <li routerLinkActive="active"><a routerLink="/carros">Carros</a></li>
+    <a routerLink="" class="brand-logo">Gerenciamento de manutenção de carro</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down" *ngIf="mostrarMenuUsuario">
+      <li routerLinkActive="active"><a routerLink="/usuario">Cadastre-se</a></li>
+      <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
     </ul>
   </div>
 </nav>
