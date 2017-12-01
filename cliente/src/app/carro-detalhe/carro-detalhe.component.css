@@ -1,0 +1,14 @@
+.container-alerta{
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #e030304f;
+    color: #770202c7;
+}
+
+.container-alerta ul {
+    padding: 0 20px;
+}
+
+.container-alerta ul li {
+    list-style-type: initial;
+}

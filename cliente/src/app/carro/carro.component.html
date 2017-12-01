@@ -1,0 +1,38 @@
+<form>
+    <h5>
+      Cadastro de Carro
+    </h5>
+  
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="modelo" name="modelo" type="text" [(ngModel)]="carro.modelo" class="validate">
+        <label for="modelo">Modelo</label>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="ano" name="ano" type="text" [(ngModel)]="carro.ano" class="validate">
+        <label for="ano">Ano</label>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="placa" name="placa" type="text" [(ngModel)]="carro.placa" class="validate">
+        <label for="placa">Placa</label>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="km" name="km" type="text" [(ngModel)]="carro.km" class="validate">
+        <label for="km">Km</label>
+      </div>
+    </div>
+    
+    <button class="btn waves-effect waves-light" type="submit" name="btnCadastrar" (click)="cadastrar()">
+      Cadastrar
+      <i class="material-icons right">send</i>
+    </button>
+</form>
