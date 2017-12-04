@@ -1,38 +1,50 @@
-<form>
-    <h5>
-      Cadastro de Carro
-    </h5>
-  
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="modelo" name="modelo" type="text" [(ngModel)]="carro.modelo" class="validate">
-        <label for="modelo">Modelo</label>
-      </div>
-    </div>
+<div class="container">
+    <form (ngSubmit)="cadastrar(carroForm)" #carroForm="ngForm">
+        <h3>
+            Cadastro de Carro
+        </h3>
     
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="ano" name="ano" type="text" [(ngModel)]="carro.ano" class="validate">
-        <label for="ano">Ano</label>
-      </div>
-    </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <label for="modelo" class="required">Modelo</label>                
+                <input id="modelo" name="modelo" type="text" [(ngModel)]="carro.modelo" class="validate" required #modelo="ngModel">
+                <div class="invalid-input-message" [hidden]="modelo.untouched || modelo.valid">
+                    Campo Obrigatório!
+                </div>
+            </div>
+        </div>
     
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="placa" name="placa" type="text" [(ngModel)]="carro.placa" class="validate">
-        <label for="placa">Placa</label>
-      </div>
-    </div>
-  
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="km" name="km" type="text" [(ngModel)]="carro.km" class="validate">
-        <label for="km">Km</label>
-      </div>
-    </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="ano" name="ano" type="text" [(ngModel)]="carro.ano" class="validate">
+                <label for="ano">Ano</label>
+            </div>
+        </div>
     
-    <button class="btn waves-effect waves-light" type="submit" name="btnCadastrar" (click)="cadastrar()">
-      Cadastrar
-      <i class="material-icons right">send</i>
-    </button>
-</form>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="placa" name="placa" type="text" [(ngModel)]="carro.placa" class="validate">
+                <label for="placa">Placa</label>
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="input-field col s12">
+                <label for="km" class="required">Km</label>                
+                <input id="km" name="km" type="text" [(ngModel)]="carro.km" class="validate" required #km="ngModel">
+                <div class="invalid-input-message" [hidden]="km.untouched || km.valid">
+                    Campo Obrigatório!
+                </div>
+            </div>
+        </div>
+    
+        <div class="row right-align">
+            <a class="btn waves-effect waves-light" [routerLink]="['..']">
+                Voltar
+            </a>
+            <button class="btn waves-effect waves-light" type="submit" name="btnCadastrar">
+                Cadastrar
+            </button>
+        </div>
+    </form>
+</div>

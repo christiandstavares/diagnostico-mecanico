@@ -6,7 +6,7 @@ import lombok.Getter;
 public enum ItensDefaultEnum {
 
     OLEO_FILTRO_MOTOR("Óleo e Filtro do Motor", 6, 10000),
-    FLUIDO_FREIO("Fluído do Freio", 12, 0),
+    FLUIDO_FREIO("Fluído do Freio", 12, 10000),
     SISTEMA_FREIOS("Sistema de Freios", 0, 10000),
     SISTEMA_ARREFECIMENTO("Sistema de Arrefecimento", 0, 30000),
     FILTRO_COMBUSTIVEL("Filtro de Combustível", 0, 10000),

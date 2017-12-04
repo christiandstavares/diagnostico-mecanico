@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { Carro } from './../carro/carro';
 
+declare var Materialize: any;
+
 @Component({
   selector: 'app-carro-detalhe',
   templateUrl: './carro-detalhe.component.html',
@@ -42,6 +44,7 @@ export class CarroDetalheComponent implements OnInit {
   salvar() {
     this.carroService.salvar(this.carro, this.idUsuario);
     this.atualizarAlertaItens();
+      Materialize.toast("Dados atualizados com sucesso!", 4000, "toast-success");
   }
 
   atualizarAlertaItens() {

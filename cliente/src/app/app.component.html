@@ -1,13 +1,13 @@
-<nav>
-  <div class="nav-wrapper">
-    <a routerLink="" class="brand-logo">Gerenciamento de manutenção de carro</a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down" *ngIf="mostrarMenuUsuario">
-      <li routerLinkActive="active"><a routerLink="/usuario">Cadastre-se</a></li>
-      <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
-    </ul>
-  </div>
-</nav>
-
-<div class="container">
-  <router-outlet></router-outlet>
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper">
+          <a routerLink="" class="brand-logo">CarMM</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down" *ngIf="mostrarMenuUsuario">
+            <li routerLinkActive="active"><a routerLink="/usuario">Cadastre-se</a></li>
+            <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
+          </ul>
+        </div>
+      </nav>
 </div>
+
+<router-outlet></router-outlet>

@@ -1,45 +1,54 @@
-<div layout="row">
-    <h3 class="col s12">
+<div class="container">
+    <h3>
         {{ carro.modelo }}
     </h3>
-    <form class="col s6">
-        <div layout="row">
-            <div class="input-field col s6">
+
+    <div class="row">
+        <div class="col s12">
+            Quilometragem atual:
+            <div class="input-field inline">
                 <input id="km" name="km" type="text" [(ngModel)]="carro.km" class="validate">
                 <label class="active" for="km">km</label>
             </div>
         </div>
-    </form>
+    </div>
 
-    <div class="container-alerta">
-      <h5>Os seguintes itens necessitam ser revisados!</h5>
-      <ul>
-        <li *ngFor="let item of itensAlerta">{{ item }}</li>
-      </ul>
+    <div class="container-alerta" *ngIf="itensAlerta.length > 0">
+        <h5>
+            Os seguintes itens precisam ser revisados!
+        </h5>
+
+        <ul>
+            <li *ngFor="let item of itensAlerta">{{ item }}</li>
+        </ul>
     </div>
 
     <h4>
       Lista de Itens do Carro
     </h4>
 
-    <table class="striped bordered">
-        <thead>
-          <tr>
-              <th>Nome</th>
-              <th>Km da Última Revisão</th>
-          </tr>
-        </thead>
+    <div class="row">
+        <table class="striped bordered">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Km da Última Revisão</th>
+                </tr>
+            </thead>
+        
+            <tbody>
+                <tr *ngFor="let item of carro.itens">
+                    <td>{{ item.descricao }}</td>
+                    <td>
+                        <input type="text" [(ngModel)]="item.ultimaRevisaoKm">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-        <tbody>
-          <tr *ngFor="let item of carro.itens">
-            <td>{{ item.descricao }}</td>
-            <td><input type="text" [(ngModel)]="item.ultimaRevisaoKm"></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="right-align" style="padding: 20px 0;">
-          <a class="waves-effect waves-light btn" [routerLink]="['../..']">Voltar</a>
-          <a class="waves-effect waves-light btn" (click)="salvar()">Salvar</a>
-      </div>
+    <div class="row right-align">
+        <a class="waves-effect waves-light btn" [routerLink]="['../..']">Voltar</a>
+        <a class="waves-effect waves-light btn" (click)="salvar()">Salvar</a>
+    </div>
 </div>
